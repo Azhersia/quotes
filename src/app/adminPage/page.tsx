@@ -1,5 +1,6 @@
 import { deleteData, getData, saveData, updateData } from '@/utils/handleDatabase'
 import { revalidateTag } from "next/cache"
+import Link from 'next/link'
 
 export default async function Home() {
 
@@ -32,12 +33,11 @@ export default async function Home() {
   console.log(data)
   return (
 
-
     <div className="flex flex-col items-center justify-center bg-olive min-h-screen w-full gap-2 p-3 text-oliveText">
 
       <div className='flex flex-col m-2 items-center'>
-        <a href="/random">Go to random quote!</a>
-        <a href="/">Go to all quotes!</a>
+        <Link href="/random">Go to random quote!</Link>
+        <Link href="/">Go to all quotes!</Link>
       </div>
 
       <div className='flex flex-col gap-3 '>

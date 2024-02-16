@@ -1,5 +1,7 @@
 import { deleteData, getData, saveData, updateData } from '@/utils/handleDatabase'
 import { revalidateTag } from "next/cache"
+import Link from 'next/link'
+
 
 export default async function Home() {
 
@@ -19,8 +21,8 @@ export default async function Home() {
     <div className="bg-olive min-h-screen w-full flex flex-col items-center justify-center gap-8">
 
       <div className='flex flex-col m-2 items-center'>
-        <a href="/random" className='text-oliveText'>Go to random quote!</a>
-        <a href="/adminPage" className='text-oliveText'>Go to admin page!</a>
+        <Link href="/random" className='text-oliveText'>Go to random quote!</Link>
+        <Link href="/adminPage" className='text-oliveText'>Go to admin page!</Link>
       </div>
       <div className='flex flex-col items-center justify-center mb-10'>
 
@@ -30,10 +32,12 @@ export default async function Home() {
 
               <div className='bg-oliveShade gap-10 px-4 py-1 rounded-t-lg text-xl'>
 
-                <div className='flex justify-between'>
+                <div className='flex justify-between items-center'>
                   <p>{quote.quote}</p>
                   <div>
                     <p className='ml-5 text-xs hover:cursor-pointer'>ID: {quote.id}</p>
+                    <Link href={"/quotes/" + quote.id} className='text-xs ml-5' >Edit</Link>
+
                     <form action={deleteForm}>
                       <button className='ml-5 text-xs hover:cursor-pointer'>Delete</button>
                       <input type="hidden" name='id' value={quote.id} />
